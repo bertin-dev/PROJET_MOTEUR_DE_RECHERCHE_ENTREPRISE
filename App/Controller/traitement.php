@@ -206,8 +206,8 @@ if (isset($_GET['singIn'])) {
         nettoieProtect();
         extract($_POST);
 
-        if (strlen($_POST['emailSingIn']) < 4 || strlen($_POST['emailSingIn']) > 20) {
-            echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
+        if (strlen($_POST['emailSingIn']) < 4 || strlen($_POST['emailSingIn']) > 50) {
+            echo '<br>L\'adresse Email est compris entre 3 et 50 caractères';
             exit;
         }
 
@@ -233,7 +233,7 @@ if (isset($_GET['singIn'])) {
     }
 
 
-    if (isset($_POST['passwordSingIn'])) {
+    /*if (isset($_POST['passwordSingIn'])) {
 
         nettoieProtect();
         extract($_POST);
@@ -254,7 +254,7 @@ if (isset($_GET['singIn'])) {
         } else {
             echo 'success';
         }
-    }
+    }*/
 
 }
 
@@ -269,8 +269,8 @@ if (isset($_GET['getEmail'])) {
         nettoieProtect();
         extract($_POST);
 
-        if (strlen($_POST['getEmail']) < 4 || strlen($_POST['getEmail']) > 20) {
-            echo '<br>L\'adresse Email est compris entre 3 et 16 caractères';
+        if (strlen($_POST['getEmail']) < 4 || strlen($_POST['getEmail']) > 50) {
+            echo '<br>L\'adresse Email est compris entre 3 et 50 caractères';
             exit;
         }
 
@@ -316,7 +316,7 @@ if (isset($_GET['search_contenu'])) {
     } else {
         $result .= '<div class="col-lg-2"></div>
                     <div class="col-lg-8">
-                        <h5>A LA UNE</h5>
+                        <h5><strong>A LA UNE</strong></h5>
                         <div class="card card-cascade narrower">';
 
         foreach (App::getDB()->query('SELECT * FROM detailactivity_users
@@ -338,12 +338,16 @@ if (isset($_GET['search_contenu'])) {
             $result .= '" alt="" width="150" height="150">
                                     </div>
                                     <div class="col-lg-10 wow fadeInDown animated" style="padding: initial; margin: initial; visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInDown;">
-                                        <h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($article_item->nom_structure) . '</h4>
-                                        <div class="col-lg-12">' . $article_item->nom_responsable . '</div>
-                                        <div class="col-lg-12 info">Téléphone: ' . $article_item->phone . ', BP:' . $article_item->bp . '</div>
-                                        <div class="col-lg-12 info">' . $article_item->quartier . ', ' . $article_item->ville . ', ' . $article_item->pays . '</div>
+                                        <h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($article_item->nom_responsable) . '</h4>
+                                        <!--<h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($article_item->nom_structure) . '</h4>-->
+                                        <div class="col-lg-12 info">Pays: ' . $article_item->pays . '</div>
+                                        <div class="col-lg-12 info">Ville: ' . $article_item->ville . '</div>
+                                        <div class="col-lg-12 info">Spécialité: ' . $article_item->specialites . '</div>
+                                        <div class="col-lg-12 info">Quartier: ' . $article_item->quartier . '</div>
+                                        <div class="col-lg-12 info">Téléphone: ' . $article_item->phone . '</div>
+                                        <div class="col-lg-12 info">BP: ' . $article_item->bp . '</div>
                                         <div class="col-lg-12 info"> <a href="' . $article_item->web_site . '" title="' . $article_item->web_site . '">' . $article_item->web_site . ' </a></div>
-                                        <div class="col-lg-12 info" style="font-style: italic">Posté il y a 3 heures</div>
+                                        <div class="col-lg-12 info" style="font-style: italic">Posté le '. date("d/m/Y, h:i:s", $article_item->create_at) .'</div>
                                     </div>
                                 </div>';
         endforeach;

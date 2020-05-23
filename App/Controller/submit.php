@@ -1,9 +1,5 @@
 <?php
-// Load Composer's autoloader
-//require '../../vendor/autoload.php';
-
 session_start();
-//use \App\PHPMailer\Send_Email;
 
 if(isset($_SESSION['ID_USER'])) {
     $compte = intval($_SESSION['ID_USER']);
@@ -64,56 +60,57 @@ function get_ip(){
 
 // Une fois le formulaire envoyé pour la souscription
 if(isset($_GET['singUp'])) {
+    $msg = "";
 
     if(is_numeric($_POST['nomSingUp'][0])){
-        echo 'Le Nom doit commencer par une lettre';
-        exit;
+        $msg = 'Le Nom doit commencer par une lettre';
+        //exit;
     }
     // Vérification de la validité des champs
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['nomSingUp'])) {
-        echo "Le Nom est Invalid";
-        exit();
+        $msg = "Le Nom est Invalid";
+        //exit();
     }
 
     /*-------------------------------*/
     if(is_numeric($_POST['prenomSingUp'][0])){
-        echo 'Le Prenom doit commencer par une lettre<br>';
-        exit;
+        $msg = 'Le Prenom doit commencer par une lettre';
+        //exit;
     }
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['prenomSingUp'])) {
-        echo "Le Prenom est Invalid";
-        exit();
+        $msg = "Le Prenom est Invalid";
+        //exit();
     }
 
 
     if (!preg_match('/^[0-9-_ ]{9}$/', $_POST['telSingUp'])) {
-        echo "Le numéro est Invalid";
-        exit();
+        $msg = "Le numéro est Invalid";
+        //exit();
     }
 
 
     /*-------------------------------*/
     if(is_numeric($_POST['emailSingUp'][0])){
-        echo 'L\'email doit commencer par une lettre<br>';
-        exit;
+        $msg = 'L\'email doit commencer par une lettre';
+        //exit;
     }
     if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingUp'])) {
-        echo "Email Invalid";
-        exit();
+        $msg = "Email Invalid";
+        //exit();
     }
 
     /*---------------------------------------------------*/
 
     if (!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['passwordSingUp'])) {
-        echo "password Invalid";
-        exit();
+        $msg = "password Invalid";
+        //exit();
     }
 
 
     if ($_POST['passwordSingUp'] != $_POST['passwordConfirmSingUp']) {
-        echo "Les Mots de Passe sont différents";
-        exit();
+        $msg = "Les Mots de Passe sont différents";
+        //exit();
     }
 
     $_POST['nomSingUp'] = strtolower(stripslashes(htmlspecialchars($_POST['nomSingUp'])));
@@ -130,8 +127,8 @@ if(isset($_GET['singUp'])) {
      OR email="'.$_POST['emailSingUp'].'"');
 
     if($nbre > 0){
-        echo 'numéro ou email déjà utilisé';
-        exit;
+        $msg = 'numéro ou email déjà utilisé';
+        //exit;
     }
 
     else {
@@ -156,26 +153,33 @@ if(isset($_GET['singUp'])) {
         // Si une erreur survient
         if($nbreEmail > 0)
         {
-            echo "Votre Adresse Email Existe déjà<br/>";
+            $msg = "Votre Adresse Email Existe déjà";
         }
         else
         {
             //$id_forum = $connexion->prepare_request('SELECT id_blog FROM blog', array());
             $connexion->insert('INSERT INTO users(lastname, firstname, birth, phone, email, password, clef_activation, etat_compte, role_id, profession_id, create_at) 
                                       VALUES(?,?,?,?,?,?,?,?,?,?,?)', [$_POST['nomSingUp'], $_POST['prenomSingUp'], $_POST['birthSingUp'], $_POST['telSingUp'],
-                $_POST['emailSingUp'], $_POST['passwordSingUp'], $clef_activation, '0', 1, intval($_POST['professionSingUp']),  time()]);
+                $_POST['emailSingUp'], $_POST['passwordSingUp'], $clef_activation, '1', 1, intval($_POST['professionSingUp']),  time()]);
 
-            $max = $connexion->prepare_request('SELECT id AS max_id FROM users ORDER BY id DESC LIMIT 1', array());
+            $max = $connexion->prepare_request('SELECT Max(id) AS max_id FROM users ORDER BY id DESC LIMIT 1 ', array());
+
+                $_SESSION['ID_USER'] = $max['max_id'];
+                $_SESSION['EMAIL_USER'] = $_POST['emailSingUp'];
+
+
+
+            $msg = 'success';
 
 
             // Envoi du mail d'activation
             $sujet = "Activation de votre compte utilisateur";
 
-            $msg ='
+            $msg2 ='
 <!doctype html>
 <html lang="fr">
 <head>
-<title>Consultant Developpeur</title>
+<title>SEARCH</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -183,7 +187,7 @@ if(isset($_GET['singUp'])) {
     <meta name="keywords" lang="fr" content="">
     <!-- Insère la description extraite de la DB dans les meta -->
     <meta name="description" lang="fr" content="">
-    <meta name="author" content="Bertin Mounok, Bertin-Mounok, Pipo, Supers-Pipo, bertin.dev, bertin-dev, Ngando Mounok Hugues Bertin">
+    <meta name="author" content="bertin.dev, Inc">
     <meta name="copyright" content="© '.date('Y', time()).'", bertin.dev, Inc.">
 </head>
 <body style=" font-size: 15px; line-height: 1.42857143; font-family: \'Sansation\',\'Trebuchet MS\',Helvetica,Verdana,sans-serif,serif; color: #DDD;background: #2f2f2f url(\'Public/img/background.png\') repeat;">
@@ -192,10 +196,10 @@ if(isset($_GET['singUp'])) {
     <div style="background-color: #0f6296; height: 5px;"></div>
     <nav role="navigation" style="background-color: #192730; min-height: 50px; margin-bottom: 20px; border: 1px solid transparent;">
        <div style="width: 25%; float: left;"> 
-       <img src="https://'.$_SERVER['HTTP_HOST'].'/Public/img/bertin-mounok.png" alt="Logo" title="Consultant Developpeur" width="50px">
+       <img src="https://'.$_SERVER['HTTP_HOST'].'/img/homme.png" alt="Logo" title="Search Enterprise" width="50px">
        <span style="font-size: 9px; position: relative; top: -8px" title="bertin.dev">Bertin</span>
        </div>
-        <div style="width: 75%; float:left; font-variant: small-caps"><h1>Développeur</h1></div>
+        <div style="width: 75%; float:left; font-variant: small-caps"><h1>Search Enterprise</h1></div>
     </nav>
 </header>
 
@@ -203,7 +207,6 @@ if(isset($_GET['singUp'])) {
 <div style="text-align: center!important;">
     <h2>Bonjour '.$_POST['prenomSingUp'].' et Bienvenue.</h2>
     <p>Merci de vouloir être régulièrement informé des nouvelles annonces publiées
-        <mark><strong>dans la categorie Projet Réalisés.</strong></mark>
     </p>
 </div>
 
@@ -233,9 +236,9 @@ if(isset($_GET['singUp'])) {
     </button>
 </div>
 <br>
-<div style="margin-bottom: 25px; display: block">
+<!--<div style="margin-bottom: 25px; display: block">
     <small>Vous souhaitez réaliser votre projet afin d\'être plus productif dans votre activité, n\'hésiter pas à me contacter. Je reste ouvert à tout heure. </small>
-</div>
+</div>-->
 
 <footer>
         <nav>
@@ -247,13 +250,18 @@ if(isset($_GET['singUp'])) {
 </html>
 ';
 
-            echo Send_Email::envoi($_POST['emailSingUp'], $_POST['nomSingUp'], $sujet, $msg, '', '');
+            //echo Send_Email::envoi($_POST['emailSingUp'], $_POST['nomSingUp'], $sujet, $msg2, '', '');
             $connexion->delete('DELETE FROM users WHERE create_at <:date_expiration AND etat_compte=:etat', ['date_expiration' => (time() - 172800), 'etat' => 0]);
             /*$connexion->insert('INSERT INTO journal(ref_id_compte,libelle, page, statut, ip, date_creation)
                                                VALUES(?, ?, ?, ?, ?, ?)', array($compte, 'Enregistrement partiel', 'index.php', $statut, get_ip(), time()));*/
 
         }
     }
+
+    $data = array(
+        'resultat' => $msg
+    );
+    echo json_encode($data);
 
 }
 
@@ -289,42 +297,47 @@ if(isset($_GET['singIn'])) {
 
 
 
-    $nbre = $connexion->rowCount('SELECT id FROM users WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'" AND etat_compte="1" AND role_id > 1');
+    $nbre = $connexion->rowCount('SELECT id FROM users WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'" AND etat_compte="1" ');
 
-    if($nbre <= 0){
+    if($nbre == 0){
+        echo 'Votre Compte n\'existe pas ou alors n\'est pas activé';
+        exit;
+        }
+    else {
+        $nbre2 =  $connexion->prepare_request('SELECT role_id FROM users WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
+            ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
 
-        $admin = $connexion->rowCount('SELECT id FROM users WHERE email="'.$_POST['emailSingIn'].'" AND password="'.$_POST['passwordSingIn'].'"');
-        if($admin <= 0){
-            echo 'Votre Compte n\'existe pas ou alors n\'est pas activé';
-            exit;
-        }else{
+        //var_dump($nbre2['role_id']);
+        //die();
+
+        if(intval($nbre2['role_id'])==2){
+
             $connexion->insert('INSERT INTO journal(users_id, libelle, ip, create_at) 
                                                VALUES(?, ?, ?, ?)', array($compte, 'Connexion Administrateur', get_ip(), time()));
             echo 'admin';
-        }
-    }
 
-    else {
-        $nbre_con =  $connexion->prepare_request('SELECT id, lastname, email, number_login FROM users WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
-            ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
+        } else{
+            $nbre_con =  $connexion->prepare_request('SELECT id, lastname, email, number_login FROM users WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte',
+                ['email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
 
-        $connexion->update('UPDATE users SET last_consult=:last_consult, number_login=:nbre_connexion 
+            $connexion->update('UPDATE users SET last_consult=:last_consult, number_login=:nbre_connexion 
         WHERE email=:email AND password=:pwd AND etat_compte=:etat_compte', ['last_consult'=>time(), 'nbre_connexion'=>intval($nbre_con['number_login'])+1, 'email'=>$_POST['emailSingIn'], 'pwd'=>$_POST['passwordSingIn'], 'etat_compte'=>'1']);
 
-        //gestion du checkbox qui est sur l'authentification
-        if(isset($_POST['t_and_c']) && $_POST['t_and_c']=='1')
-        {
-            setcookie('ID_USER', $nbre_con['id'], time() + 30*24*3600, null, null, false, true);
-            setcookie('NOM_USER', $nbre_con['lastname'], time() + 30*24*3600, null, null, false, true);
-            setcookie('EMAIL_USER', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
-        }
-        else{
-            $_SESSION['ID_USER'] = $nbre_con['id'];
-            $_SESSION['EMAIL_USER'] = $nbre_con['email'];
-        }
-        $connexion->insert('INSERT INTO journal(users_id, libelle, ip, create_at) 
+            //gestion du checkbox qui est sur l'authentification
+            if(isset($_POST['t_and_c']) && $_POST['t_and_c']=='1')
+            {
+                setcookie('ID_USER', $nbre_con['id'], time() + 30*24*3600, null, null, false, true);
+                setcookie('NOM_USER', $nbre_con['lastname'], time() + 30*24*3600, null, null, false, true);
+                setcookie('EMAIL_USER', $nbre_con['email'], time() + 30*24*3600, null, null, false, true);
+            }
+            else{
+                $_SESSION['ID_USER'] = $nbre_con['id'];
+                $_SESSION['EMAIL_USER'] = $nbre_con['email'];
+            }
+            $connexion->insert('INSERT INTO journal(users_id, libelle, ip, create_at) 
                                                VALUES(?, ?, ?, ?)', array($compte, 'Connexion utilisateur', get_ip(), time()));
-        echo 'success';
+            echo 'success';
+        }
     }
 
 }
@@ -551,6 +564,8 @@ if(isset($_GET['detailActivity'])) {
         }
         else
         {
+/*var_dump($compte);
+die();*/
             //$id_forum = $connexion->prepare_request('SELECT id_blog FROM blog', array());
             $connexion->insert('INSERT INTO detailactivity_users(logo, nom_structure, nom_responsable, pays, ville, quartier, 
              rue, phone, bp, web_site, date_creation, type_vehicule, agent_ravito_carburant, type_avion, nombre_pilotes, specialites,
@@ -561,11 +576,13 @@ if(isset($_GET['detailActivity'])) {
                 $_POST['secteur_activite'], $_POST['statut_juridique'], $_POST['regime_fiscale'], intval($nbr_etoiles), $_POST['type_plats'], time()
             ]);
 
-            //$max = $connexion->prepare_request('SELECT id AS max_id FROM detailactivity_users ORDER BY id DESC LIMIT 1', array());
+            $max = $connexion->prepare_request('SELECT Max(id) AS max_id FROM detailactivity_users ORDER BY id LIMIT 1', array());
+
+            $connexion->insert('INSERT INTO activity_and_details(activity_users_id, detailactivity_users_id, create_at)
+                                         VALUES(?, ?, ?)', [intval($_POST['activity_user']) ,intval($max['max_id']), time()]);
 
             $connexion->update('UPDATE users SET activity_users_id=:activity_users_id
-                                         WHERE id=:id', array('activity_users_id' => intval($_POST['activity_user']), 'id' => intval($max)));
-
+                                         WHERE id=:id', array('activity_users_id' => intval($_POST['activity_user']), 'id' => intval($compte)));
 
             echo 'success';
 
@@ -650,5 +667,83 @@ if(isset($_GET['search'])) {
 
 
     echo json_encode($data);
+
+}
+
+
+// Une fois le formulaire envoyé pour la modification
+if(isset($_GET['singUp1'])) {
+
+    if(is_numeric($_POST['nomSingUp1'][0])){
+        echo 'Le Nom doit commencer par une lettre';
+        exit;
+    }
+    // Vérification de la validité des champs
+    if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['nomSingUp1'])) {
+        echo "Le Nom est Invalid";
+        exit();
+    }
+
+    /*-------------------------------*/
+    if(is_numeric($_POST['prenomSingUp1'][0])){
+        echo 'Le Prenom doit commencer par une lettre<br>';
+        exit;
+    }
+
+    if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['prenomSingUp1'])) {
+        echo "Le Prenom est Invalid";
+        exit();
+    }
+
+
+    if (!preg_match('/^[0-9-_ ]{9}$/', $_POST['telSingUp1'])) {
+        echo "Le numéro est Invalid";
+        exit();
+    }
+
+
+    /*-------------------------------*/
+    if(is_numeric($_POST['emailSingUp1'][0])){
+        echo 'L\'email doit commencer par une lettre<br>';
+        exit;
+    }
+    if (!preg_match('/^[A-Z\d\._-]+@[A-Z\d\.-]{2,}\.[A-Z]{2,4}$/i', $_POST['emailSingUp1'])) {
+        echo "Email Invalid";
+        exit();
+    }
+
+    /*---------------------------------------------------*/
+
+    if (!preg_match('/^[A-Za-z0-9_ ]{4,50}$/', $_POST['passwordSingUp1'])) {
+        echo "password Invalid";
+        exit();
+    }
+
+
+    if ($_POST['passwordSingUp1'] != $_POST['passwordConfirmSingUp1']) {
+        echo "Les Mots de Passe sont différents";
+        exit();
+    }
+
+    $_POST['nomSingUp1'] = strtolower(stripslashes(htmlspecialchars($_POST['nomSingUp1'])));
+    $_POST['prenomSingUp1'] = strtolower(stripslashes(htmlspecialchars($_POST['prenomSingUp1'])));
+    $_POST['birthSingUp1'] = strtolower(stripslashes(htmlspecialchars($_POST['birthSingUp1'])));
+    $_POST['telSingUp1'] = strtolower(stripslashes(htmlspecialchars($_POST['telSingUp1'])));
+    $_POST['emailSingUp1'] = strtolower(stripslashes(htmlspecialchars($_POST['emailSingUp1'])));
+    $_POST['passwordSingUp1'] = stripslashes(htmlspecialchars($_POST['passwordSingUp1']));
+    $_POST['passwordSingUp1'] = sha1($_POST['passwordSingUp1']);
+
+    // Connexion à la base de données
+
+    $connexion->update('UPDATE users SET lastname=:lastname, firstname=:firstname, birth=:birth,
+ phone=:phone, email =:email , password=:password,
+                  profession_id=:profession_id, update_at=:update_at 
+                    WHERE id=:id',
+        array('lastname' => $_POST['nomSingUp1'], 'firstname' => $_POST['prenomSingUp1'], 'birth' => $_POST['birthSingUp1'],
+            'phone' => $_POST['telSingUp1'], 'email' => $_POST['emailSingUp1'], 'password' => $_POST['passwordSingUp1'],
+            'profession_id' => $_POST['professionSingUp1'], 'update_at' => time(),
+            'id' => $_POST['id3']));
+
+    echo 'success';
 
 }

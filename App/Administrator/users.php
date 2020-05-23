@@ -25,15 +25,15 @@ require '../Config/Config_Server.php'; ?>
                 <!-- /#page-content-wrapper -->
                 <?php
                 if (isset($_GET['modif'])) {
-                    foreach (App::getDB()->query('SELECT role.libelle, profession.libelle, users.id, lastname, firstname, birth, 
+                    foreach (App::getDB()->query('SELECT role.libelle, activity_users.libelle, profession.libelle, users.id, lastname, firstname, birth, 
                                                                                       phone, email, password, etat_compte, users.create_at, users.update_at
                                                                                FROM users
                                                                                INNER JOIN role
                                                                                ON users.role_id=role.id
                                                                                INNER JOIN profession
                                                                                ON users.profession_id=profession.id
-                                                                               /*INNER JOIN activity_users
-                                                                               ON users.activity_users_id=activity_users.id*/
+                                                                               INNER JOIN activity_users
+                                                                               ON users.activity_users_id=activity_users.id
                                                                                WHERE users.id=' . $_GET['modif']) as $ccompte):
                         ?>
                         <article class="col-lg-7">
@@ -203,16 +203,16 @@ require '../Config/Config_Server.php'; ?>
                                         <tbody>
 
                                         <tbody id="tabdynamique">
-                                        <?php //activity_users.libelle,
-                                        foreach (App::getDB()->query('SELECT role.libelle, profession.libelle AS job, users.id, lastname, firstname, birth, 
+                                        <?php
+                                        foreach (App::getDB()->query('SELECT role.libelle, activity_users.libelle AS descript, profession.libelle AS job, users.id, lastname, firstname, birth, 
                                                                                       phone, email, password, etat_compte, users.create_at, users.update_at
                                                                                FROM users
                                                                                INNER JOIN role
                                                                                ON users.role_id=role.id
                                                                                INNER JOIN profession
                                                                                ON users.profession_id=profession.id
-                                                                               /*INNER JOIN activity_users
-                                                                               ON users.activity_users_id=activity_users.id*/
+                                                                               INNER JOIN activity_users
+                                                                               ON users.activity_users_id=activity_users.id
                                                                                ORDER BY id DESC') as $ccompte):
                                             echo '<tr>
                                                         <td title="ID">' . $ccompte->id . '</td> 
@@ -225,7 +225,7 @@ require '../Config/Config_Server.php'; ?>
                                                         <td title="ETAT COMPTE">' . $ccompte->etat_compte . '</td> 
                                                         <td title="PROFESSION">' . $ccompte->job . '</td> 
                                                         <td title="ROLE">' . $ccompte->libelle . '</td>
-                                                        <td title="CATEGORY">' . $ccompte->activity_users_id . '</td>
+                                                        <td title="CATEGORY">' . $ccompte->descript . '</td>
                                                         <td title="DATE_ENREG">' . date('d/m/Y H:m:s', $ccompte->create_at) . '</td> 
                                                         <td title="DATE_MODIF">' . date('d/m/Y H:m:s', $ccompte->update_at) . '</td>                 
                                                         <td title="MODIFIER"><a href="users.php?modif=' . $ccompte->id . '"  class="modifElementTab">MODIFIER</a></td>

@@ -23,5 +23,13 @@
         <li>
             <a href="profession.php">AJOUT DE LA PROFESSION</a>
         </li>
+
+        <li>
+            <a href="journal.php">JOURNAL DE L'Apps</a>
+        </li>
+
+        <li>
+            <a href="../index.php">RETOUR A L'ACCUEIL</a>
+        </li>
     </ul>
 </div>
