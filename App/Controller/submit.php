@@ -378,69 +378,58 @@ if(isset($_GET['getEmail'])){
 // Une fois le formulaire envoyé pour l'enregistrement des informations
 if(isset($_GET['detailActivity'])) {
 
+    $msg = '';
 
     if(is_numeric($_POST['structure_name'][0])){
-        echo 'Le Nom de la structure doit commencer par une lettre';
-        exit;
+        $msg = 'Le Nom de la structure doit commencer par une lettre<br/>';
     }
     // Vérification de la validité des champs
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['structure_name'])) {
-        echo "Le Nom de la structure est Invalid";
-        exit();
+        $msg = "Le Nom de la structure est Invalid<br/>";
     }
 
     /*-------------------------------*/
     if(is_numeric($_POST['responsable_name'][0])){
-        echo 'Le nom du responsable doit commencer par une lettre<br>';
-        exit;
+        $msg = 'Le nom du responsable doit commencer par une lettre<br>';
     }
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['responsable_name'])) {
-        echo "Le nom du responsable est Invalid";
-        exit();
+        $msg = "Le nom du responsable est Invalid<br/>";
     }
 
     /*-------------------------------*/
     if(is_numeric($_POST['pays'][0])){
-        echo 'Le pays doit commencer par une lettre<br>';
-        exit;
+        $msg = 'Le pays doit commencer par une lettre<br>';
     }
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['pays'])) {
-        echo "Le pays est Invalid";
-        exit();
+        $msg = "Le pays est Invalid<br/>";
     }
 
 
     /*-------------------------------*/
     if(is_numeric($_POST['ville'][0])){
-        echo 'La ville doit commencer par une lettre<br>';
-        exit;
+        $msg = 'La ville doit commencer par une lettre<br>';
     }
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['ville'])) {
-        echo "La ville est Invalid";
-        exit();
+        $msg = "La ville est Invalid<br/>";
     }
 
 
     /*-------------------------------*/
     if(is_numeric($_POST['quartier'][0])){
-        echo 'Le quartier doit commencer par une lettre<br>';
-        exit;
+        $msg = 'Le quartier doit commencer par une lettre<br>';
     }
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['quartier'])) {
-        echo "Le quartier est Invalid";
-        exit();
+        $msg = "Le quartier est Invalid<br/>";
     }
 
 
     if (!preg_match('/^[A-Za-z0-9-_ ]{3,50}$/', $_POST['rue'])) {
-        echo "La rue est Invalid";
-        exit();
+        $msg = "La rue est Invalid<br/>";
     }
-
 
     /*--------------------------------------------------------------------------------------------------*/
 
@@ -529,16 +518,16 @@ if(isset($_GET['detailActivity'])) {
                     imagejpeg($destination, $chemin0);
                     //echo $chemin0;
                 } else {
-                    echo "Aucune image déplacé";
+                    $msg = "Aucune image déplacé<br/>";
                 }
             } else {
-                echo "extension de votre image invalide";
+                $msg = "extension de votre image invalide<br/>";
             }
         } else {
-            echo "taille de votre image invalide";
+            $msg = "taille de votre image invalide<br/>";
         }
     } else {
-        echo "image indéfinie";
+        $msg = "image indéfinie<br/>";
     }
     
 
@@ -548,8 +537,7 @@ if(isset($_GET['detailActivity'])) {
      AND nom_responsable ="'.$_POST['responsable_name'].'"');
 
     if($nbre1 > 0){
-        echo 'le nom de la structure et le responsable existe déjà.';
-        exit;
+        $msg = 'le nom de la structure et le responsable existe déjà.<br/>';
     }
     else {
 
@@ -560,14 +548,75 @@ if(isset($_GET['detailActivity'])) {
         // Si une erreur survient
         if($nbrePhone > 0)
         {
-            echo "Votre Numéro Existe déjà<br/>";
+            $msg = "Votre Numéro Existe déjà<br/>";
         }
         else
         {
-/*var_dump($compte);
-die();*/
-            //$id_forum = $connexion->prepare_request('SELECT id_blog FROM blog', array());
-            $connexion->insert('INSERT INTO detailactivity_users(logo, nom_structure, nom_responsable, pays, ville, quartier, 
+
+            //methode 1 utiliser une API
+            //Communincation avec l'api
+            //API Url
+            $url = 'http://185.247.116.176:9090/api/refdata/save';
+            //Initiate cURL.
+            $ch = curl_init($url);
+            //The JSON data.
+            $jsonData = array(
+                "categorieReferentiel"=> null,
+                "nomStructure" => $_POST['structure_name'],
+                "nomPrenomResponsable" => $_POST['responsable_name'],
+                "dateCreation" => $_POST['date_creation'],
+                "pays" => $_POST['pays'],
+                "ville" => $_POST['ville'],
+                "quartier"=> $_POST['quartier'],
+                "adresse"=> null,
+                "rue"=> $_POST['rue'],
+                "telephone" => $_POST['number'],
+                "siteWeb"=> $_POST['website'],
+                "boitePostale" => $_POST['bp'],
+                "typeCentreHospitalier" => null,
+                "Specialites" => $speciality,
+                "nbEtoile" => $nbr_etoiles,
+                "typesPlats" => $_POST['type_plats'],
+                "secteurActivite" => $_POST['secteur_activite'],
+                "statutJuridique" => $_POST['statut_juridique'],
+                "régimeFiscal" => null,
+                "assureur" => null,
+                "Premier" => null,
+                "valeurPrime"=> null,
+                "dureePrime" => null,
+                "typeVéhicule" => $_POST['type_vehicule'],
+                "agentRavitoCarburant" => $agent_ravito,
+                "typeAvion" => $_POST['type_avion'],
+                "nbPilotes" => $_POST['nombre_pilotes'],
+                "email" => null
+            );
+            //Encode the array into JSON.
+            $jsonDataEncoded = json_encode($jsonData);
+            //Tell cURL that we want to send a POST request.
+            curl_setopt($ch, CURLOPT_POST, 1);
+            // Receive server response ...
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            //Attach our encoded JSON string to the POST fields.
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonDataEncoded);
+            //Set the content type to application/json
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            //Execute the request
+            $result = curl_exec($ch);
+            // close the connection, release resources used
+            curl_close($ch);
+            //var_dump($result);
+            //die();
+
+            $data = array(
+                'resultat' => $msg,
+                'result_api' => $result
+            );
+            echo json_encode($data);
+
+
+
+            //methode 2 utiliser une base de données Locale
+            /*$connexion->insert('INSERT INTO detailactivity_users(logo, nom_structure, nom_responsable, pays, ville, quartier,
              rue, phone, bp, web_site, date_creation, type_vehicule, agent_ravito_carburant, type_avion, nombre_pilotes, specialites,
              secteur_activite, statut_juridique, regime_fiscale, nombre_etoiles, type_plats, create_at) 
                                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [
@@ -584,8 +633,15 @@ die();*/
             $connexion->update('UPDATE users SET activity_users_id=:activity_users_id
                                          WHERE id=:id', array('activity_users_id' => intval($_POST['activity_user']), 'id' => intval($compte)));
 
-            echo 'success';
+            $msg = 'success<br>';*/
 
+
+
+            //encodage en json des résultats
+            /*$data = array(
+                'resultat' => $msg
+            );
+            echo json_encode($data);*/
 
         }
     }
@@ -600,7 +656,105 @@ die();*/
 // Une fois le formulaire envoyé pour l'authentification
 if(isset($_GET['search'])) {
 
+    //methode 1 utiliser une API
+    //Communincation avec l'api
     $result = '';
+    $_GET['search_contenu'] = htmlentities((stripslashes(htmlspecialchars($_GET['search_contenu']))), ENT_QUOTES);
+    $_GET['search_contenu'] = strip_tags(trim($_GET['search_contenu'])); //supprimes balises html et supprime les espaces
+
+    $curl_handle=curl_init();
+    curl_setopt($curl_handle, CURLOPT_URL,'http://185.247.116.176:9090/api/refdata/filter/'.$_GET['search_contenu']);
+    //Set the GET method by giving 0 value and for POST set as 1
+    //curl_setopt($curl_handle, CURLOPT_POST, 0);
+    curl_setopt($curl_handle, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+    $query = curl_exec($curl_handle);
+    $data = json_decode($query, true);
+    curl_close($curl_handle);
+
+    if(empty($data)){
+        $result .= 'Aucun';
+    } else{
+    if (count($data)!=0) {
+
+        $result .= '<div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <h5><strong>A LA UNE</strong></h5>
+                        <div class="card card-cascade narrower">';
+
+        for($i=0; $i<count($data);$i++){
+            /*var_dump($data[$i]["categoriereferentiel"]);
+            var_dump($data[$i]["nomstructure"]);
+            var_dump($data[$i]["nomprenomresponsable"]);
+            var_dump($data[$i]["datecreation"]);
+            var_dump($data[$i]["pays"]);
+            var_dump($data[$i]["ville"]);
+            var_dump($data[$i]["quartier"]);
+            var_dump($data[$i]["adresse"]);
+            var_dump($data[$i]["rue"]);
+            var_dump($data[$i]["telephone"]);
+            var_dump($data[$i]["siteweb"]);
+            var_dump($data[$i]["boitepostale"]);
+            var_dump($data[$i]["typecentrehospitalier"]);
+            var_dump($data[$i]["specialites"]);
+            var_dump($data[$i]["nbetoile"]);
+            var_dump($data[$i]["typesplats"]);
+            var_dump($data[$i]["secteuractivite"]);
+            var_dump($data[$i]["statutjuridique"]);
+            var_dump($data[$i]["regimefiscal"]);
+            var_dump($data[$    i]["assureur"]);
+            var_dump($data[$i]["prime"]);
+            var_dump($data[$i]["valeurprime"]);
+            var_dump($data[$i]["dureeprime"]);
+            var_dump($data[$i]["typevehicule"]);
+            var_dump($data[$i]["agentravitocarburant"]);
+            var_dump($data[$i]["typeavion"]);
+            var_dump($data[$i]["nbpilotes"]);
+            var_dump($data[$i]["email"]);*/
+
+
+
+            $result .= '  <div class="col-lg-12 view view-cascade gradient-card-header purple-gradient">
+                                    <div class="col-lg-2 wow fadeInDown animated" data-wow-duration="3s" data-wow-delay="0.3s" style="padding: initial; margin: initial; visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInDown;">
+                                        <img src="';
+            $result .= "img/homme.png";
+            $result .= '" alt="" width="150" height="150">
+                                    </div>
+                                    <div class="col-lg-10 wow fadeInDown animated" style="padding: initial; margin: initial; visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInDown;">
+                                        <h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($data[$i]["nomStructure"]) . '</h4>
+                                        <!--<h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($data[$i]["nomStructure"]) . '</h4>-->
+                                        <div class="col-lg-12 info">Nom du Responsable: <strong>' . $data[$i]["nomPrenomResponsable"] . '</strong></div>
+                                         <div class="col-lg-12 info">Pays: ' . $data[$i]["pays"] . '</div>
+                                        <div class="col-lg-12 info">Ville: ' . $data[$i]["ville"] . '</div>
+                                        <div class="col-lg-12 info">Spécialité: ' . $data[$i]["specialites"] . '</div>
+                                        <div class="col-lg-12 info">Quartier: ' . $data[$i]["quartier"] . '</div>
+                                        <div class="col-lg-12 info">Téléphone: ' . $data[$i]["telephone"] . '</div>
+                                        <div class="col-lg-12 info">BP: ' . $data[$i]["boitePostale"] . '</div>
+                                        <div class="col-lg-12 info"> <a href="' . $data[$i]["siteWeb"] . '" title="' . $data[$i]["siteWeb"] . '">' . $data[$i]["siteWeb"] . ' </a></div>
+                                        <div class="col-lg-12 info" style="font-style: italic">Créee le '. $data[$i]["dateCreation"] .'</div>
+                                    </div>
+                                </div>';
+        }
+        $result .= '  </div>
+                    </div>
+                     <div class="col-lg-2"></div>';
+
+    }
+    else {
+        $result .= 'Aucun';
+    }
+    }
+
+    $data1 = array(
+        'resultat' => $result,
+        'compteur' => isset($data) ? count($data) : 0,
+        'mysearch' => $_GET['search_contenu']
+    );
+    echo json_encode($data1);
+
+    //methode 2 utiliser une base de données Locale
+    /*$result = '';
     $_GET['search_contenu'] = htmlentities((stripslashes(htmlspecialchars($_GET['search_contenu']))), ENT_QUOTES);
     $_GET['search_contenu'] = strip_tags(trim($_GET['search_contenu'])); //supprimes balises html et supprime les espaces
 
@@ -664,9 +818,7 @@ if(isset($_GET['search'])) {
         'compteur' => $nbre,
         'mysearch' => $_GET['search_contenu']
     );
-
-
-    echo json_encode($data);
+    echo json_encode($data);*/
 
 }
 

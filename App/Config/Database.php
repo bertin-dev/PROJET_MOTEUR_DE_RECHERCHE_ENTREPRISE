@@ -24,7 +24,6 @@ class Database
        $this->db_name1 = $db_name;
        $this->db_user1 = $db_user;
        $this->db_pass1 = $db_pass;
-
    }
 
 

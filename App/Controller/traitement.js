@@ -297,8 +297,8 @@ GESTION DU SYSTEME D'INSCRIPTION
 
             $.ajax({
                 type: 'post',
-                //url: 'Controller/submit.php?singUp=singUp',
-                url: '185.247.116.176:9090/api/refdata/save',
+                url: 'Controller/submit.php?singUp=singUp',
+                //url: '185.247.116.176:9090/api/refdata/save',
                 contentType: false, // obligatoire pour de l'upload
                 processData: false, // obligatoire pour de l'upload
                 dataType: 'json',
@@ -708,6 +708,7 @@ GESTION DU SYSTEME D'INSCRIPTION
                 url: 'Controller/submit.php?detailActivity=detailActivity',
                 contentType: false, // obligatoire pour de l'upload
                 processData: false, // obligatoire pour de l'upload
+                dataType: 'json',
                 data: donnee,
                 beforeSend: function () {
                     $('#souscription').attr('value', 'En cours...');
@@ -717,7 +718,7 @@ GESTION DU SYSTEME D'INSCRIPTION
                         '                                </div>');
                 },
                 success: function (data) {
-                    if(data != 'success'){
+                    if(data.resultat != ''){
                         statut1.html(data).fadeIn(400);
                         $('#souscription').attr('value', 'Envoyer');
                         $('#load_data_SingUp').html('<div style="display: none;">\n' +
@@ -727,7 +728,7 @@ GESTION DU SYSTEME D'INSCRIPTION
 
                         $('body').notif({
                             title: 'Message d\'erreur',
-                            content: data,
+                            content: data.resultat,
                             img: 'img/error-notif.png',
                             cls: 'error1'
                         });
@@ -749,10 +750,10 @@ GESTION DU SYSTEME D'INSCRIPTION
                         setTimeout(function () {
                             location.href='index.php';
                         }, 6000);
-                        /* $('#nomSingUp').val("");
-                         $('#prenomSingUp').val("");
-                         $('#emailSingUp').val("");
-                         $('#passwordSingUp').val("");*/
+                         //$('#nomSingUp').val("");
+                         //$('#prenomSingUp').val("");
+                         //$('#emailSingUp').val("");
+                         //$('#passwordSingUp').val("");
 
                     }
                 }

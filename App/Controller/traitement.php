@@ -296,7 +296,107 @@ SYSTEME DE GESTION DE RECHERCHES INSTANTANEES
 ========================================================================== */
 
 if (isset($_GET['search_contenu'])) {
+
+    //Communincation avec l'api
     $result = '';
+    $_GET['search_contenu'] = htmlentities((stripslashes(htmlspecialchars($_GET['search_contenu']))), ENT_QUOTES);
+    $_GET['search_contenu'] = strip_tags(trim($_GET['search_contenu'])); //supprimes balises html et supprime les espaces
+
+    $curl_handle=curl_init();
+    curl_setopt($curl_handle, CURLOPT_URL,'http://185.247.116.176:9090/api/refdata/filter/'.$_GET['search_contenu']);
+     //Set the GET method by giving 0 value and for POST set as 1
+     //curl_setopt($curl_handle, CURLOPT_POST, 0);
+    curl_setopt($curl_handle, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+    curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+    $query = curl_exec($curl_handle);
+    $data = json_decode($query, true);
+    curl_close($curl_handle);
+
+   if(empty($data)){
+       $result .= 'Aucun';
+   } else{
+       if (count($data)!=0) {
+
+           $result .= '<div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <h5><strong>A LA UNE</strong></h5>
+                        <div class="card card-cascade narrower">';
+
+           for($i=0; $i<count($data);$i++){
+               /*var_dump($data[$i]["categoriereferentiel"]);
+               var_dump($data[$i]["nomstructure"]);
+               var_dump($data[$i]["nomprenomresponsable"]);
+               var_dump($data[$i]["datecreation"]);
+               var_dump($data[$i]["pays"]);
+               var_dump($data[$i]["ville"]);
+               var_dump($data[$i]["quartier"]);
+               var_dump($data[$i]["adresse"]);
+               var_dump($data[$i]["rue"]);
+               var_dump($data[$i]["telephone"]);
+               var_dump($data[$i]["siteweb"]);
+               var_dump($data[$i]["boitepostale"]);
+               var_dump($data[$i]["typecentrehospitalier"]);
+               var_dump($data[$i]["specialites"]);
+               var_dump($data[$i]["nbetoile"]);
+               var_dump($data[$i]["typesplats"]);
+               var_dump($data[$i]["secteuractivite"]);
+               var_dump($data[$i]["statutjuridique"]);
+               var_dump($data[$i]["regimefiscal"]);
+               var_dump($data[$    i]["assureur"]);
+               var_dump($data[$i]["prime"]);
+               var_dump($data[$i]["valeurprime"]);
+               var_dump($data[$i]["dureeprime"]);
+               var_dump($data[$i]["typevehicule"]);
+               var_dump($data[$i]["agentravitocarburant"]);
+               var_dump($data[$i]["typeavion"]);
+               var_dump($data[$i]["nbpilotes"]);
+               var_dump($data[$i]["email"]);*/
+
+
+
+               $result .= '  <div class="col-lg-12 view view-cascade gradient-card-header purple-gradient">
+                                    <div class="col-lg-2 wow fadeInDown animated" data-wow-duration="3s" data-wow-delay="0.3s" style="padding: initial; margin: initial; visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInDown;">
+                                        <img src="';
+               $result .= "img/homme.png";
+               $result .= '" alt="" width="150" height="150">
+                                    </div>
+                                    <div class="col-lg-10 wow fadeInDown animated" style="padding: initial; margin: initial; visibility: visible; animation-duration: 3s; animation-delay: 0.3s; animation-name: fadeInDown;">
+                                        <h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($data[$i]["nomStructure"]) . '</h4>
+                                        <!--<h4 class="col-lg-12" style="color: #1a0dab; line-height: 1.58; font-size: 20px; margin-top: initial">' . strtoupper($data[$i]["nomStructure"]) . '</h4>-->
+                                        <div class="col-lg-12 info">Nom du Responsable: <strong>' . $data[$i]["nomPrenomResponsable"] . '</strong></div>
+                                         <div class="col-lg-12 info">Pays: ' . $data[$i]["pays"] . '</div>
+                                        <div class="col-lg-12 info">Ville: ' . $data[$i]["ville"] . '</div>
+                                        <div class="col-lg-12 info">Spécialité: ' . $data[$i]["specialites"] . '</div>
+                                        <div class="col-lg-12 info">Quartier: ' . $data[$i]["quartier"] . '</div>
+                                        <div class="col-lg-12 info">Téléphone: ' . $data[$i]["telephone"] . '</div>
+                                        <div class="col-lg-12 info">BP: ' . $data[$i]["boitePostale"] . '</div>
+                                        <div class="col-lg-12 info"> <a href="' . $data[$i]["siteWeb"] . '" title="' . $data[$i]["siteWeb"] . '">' . $data[$i]["siteWeb"] . ' </a></div>
+                                        <div class="col-lg-12 info" style="font-style: italic">Créee le '. $data[$i]["dateCreation"] .'</div>
+                                    </div>
+                                </div>';
+           }
+           $result .= '  </div>
+                    </div>
+                     <div class="col-lg-2"></div>';
+
+       }
+       else {
+           $result .= 'Aucun';
+       }
+   }
+
+    $data1 = array(
+        'resultat' => $result,
+        'compteur' => isset($data) ? count($data) : 0,
+        'mysearch' => $_GET['search_contenu']
+    );
+    echo json_encode($data1);
+
+
+
+
+    /*$result = '';
     $_GET['search_contenu'] = htmlentities((stripslashes(htmlspecialchars($_GET['search_contenu']))), ENT_QUOTES);
     $_GET['search_contenu'] = strip_tags(trim($_GET['search_contenu'])); //supprimes balises html et supprime les espaces
     //$connexion = App::getDB();
@@ -362,9 +462,7 @@ if (isset($_GET['search_contenu'])) {
         'compteur' => $nbre,
         'mysearch' => $_GET['search_contenu']
     );
-
-
-    echo json_encode($data);
+    echo json_encode($data);*/
 
 }
 
