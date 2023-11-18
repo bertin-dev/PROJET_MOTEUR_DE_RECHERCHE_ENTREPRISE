@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="abbb52c1-4634-4676-b06f-10a16f6c1237" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/03ae62a14743422cbab20e220dd27368.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/04aefbc9bcbb8553cca5bcf0d77ff2f5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/0812ab2bb16d1fbdba3f8ba9ac8562e4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/08ac97d4a97f4dd187df9d00de04d5f3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/1162da9f9bd8c4c35a4467d62dd07e60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/16ac3bf91b4bb2d8c1406d6aac388344.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/1d8271f37e5d5ad47a747264eaefc2c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/2808da3df4b60d51df287f7f5e917a3a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/290ca22d4db66be9e95f14e787d693d1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/2c807f2889e871615fe668b6cf120a3c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/2e8b6d3f0b57e6d9e6cae471796f703e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/3059cc2aca8b4c387fcf54d694b89ab4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/32313c80b06736caaa64593a0c37a717.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/35bfcf54e2a72db8392035f40eda397a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/3663a7b26951c3025d8cd89b132d869d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/3b660fcd4cd8f549d5f55a4369128b5a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/3dbe867c4a0fb25d8a5847d4c0b367cb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/41a431e3f29138d6be927fcfd8e52a02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/44b3d5edf2341e19f02a2af7d8076b6e.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/44bb66f7463341810582b7e77442b6e0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/45162896326d0645d86d5f3422a01482.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/46504854180fb8eee53b49e740dccced.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/4d1b1f5fb88be6b87073b5527b244417.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/518aef5e9d8ef63b3eb565403770e3bf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/589c05446a9ef5c0f3be603528039990.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/5d19d3e8e5b283265d8e86eabe0ca736.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/6556b51919b7c015eeed5decf6e63d27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/661db048b4d158f993d2e2ec75b25e5a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/6a2c00fb3b1477481d4bcbbace3845ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/75ecec0f03ef2a2559567f3f0559dec8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/7cd18f0f734645f36d7ce8a19c07353c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/7da3e322776b969009f00f256fcdcb44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/80398f21cd40dfcf9c70fd2a26012bc8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/805b808d3290a2902fc71fe9fa29d66f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/85191616abc5b7b14a5c21934ea7c5a9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/876b3357657b9cb05cfc81e575bb2c6f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/8b342f7de2249328880ef29eb59d7dc9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/8b894b1b2b24dbd13e1eb1ee6e0d5d06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/8f7ea46ac27249c2db2c19d7c47aaa4b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/976d2df5f11685ca08e360a83b043ea2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/997d83d70845ed4abb573bd76b7fa065.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/9ee4b5217aaca1723b9a84328199abbd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/9f039692b6e1f5814578a0904ca2a346.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/9f4b7f2ee3480cb339aafab58ebd250a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/a2777fd9ad856a1c168ea51242761755.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/b3706986171c345407304ad504ade58a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/b4d4cbbce4f3048242fa8a1d36dda2e9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/b4fc27c34651a40366387ca9e71ed739.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/b693c9f399a8148cfda3135c5679c70f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/b6ac809b4595c0e489233e6ff8d30903.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/bacfedb5de1f9eed5b003a205263df61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/baef3f7a4037319077b55d47da52f00b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/bcf4e604120b0b5ac4f9d593304b2818.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/c4457ca1a4e44017aba15b245cb72df4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/c9823b0e6ea02e8221699423e4cc9fe3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/cca7d814ece1ce2e21625a145b3fdd16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/cd5d785c51e6f3a0ff1266d337d864c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/d42b0e2d28ac92ed638a3bf8537eab28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/d62e93c2ed47839f3040fa5806c78329.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/dce29fb3622046029237a25e78ea82b5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/dfa5f402e0cc79f8d354d86322e22b75.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/e1090564d14833d157223226aacfbf62.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/e40b5a21246c1c68ecfd9b28617045c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/e49771e21405ebb120cdf4b8aa6b53d6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/e59ccd634b35b2778d8e0aafd6f7fe02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/e8a4bdcd6422db2c56cc4d603a1e0e85.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/eda90e059fb91b36962b839ce4e793d5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/f8ff036a744a8ed0e90f76ab4e2278d7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/fb3d37fea172c144bcde04584b768a4f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/03ae62a14743422cbab20e220dd27368.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/04aefbc9bcbb8553cca5bcf0d77ff2f5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/0812ab2bb16d1fbdba3f8ba9ac8562e4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/08ac97d4a97f4dd187df9d00de04d5f3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/1162da9f9bd8c4c35a4467d62dd07e60.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/16ac3bf91b4bb2d8c1406d6aac388344.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/1d8271f37e5d5ad47a747264eaefc2c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/2808da3df4b60d51df287f7f5e917a3a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/290ca22d4db66be9e95f14e787d693d1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/2c807f2889e871615fe668b6cf120a3c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/2e8b6d3f0b57e6d9e6cae471796f703e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/3059cc2aca8b4c387fcf54d694b89ab4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/32313c80b06736caaa64593a0c37a717.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/35bfcf54e2a72db8392035f40eda397a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/3663a7b26951c3025d8cd89b132d869d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/3b660fcd4cd8f549d5f55a4369128b5a.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/3dbe867c4a0fb25d8a5847d4c0b367cb.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/41a431e3f29138d6be927fcfd8e52a02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/44b3d5edf2341e19f02a2af7d8076b6e.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/44bb66f7463341810582b7e77442b6e0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/45162896326d0645d86d5f3422a01482.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/46504854180fb8eee53b49e740dccced.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/4d1b1f5fb88be6b87073b5527b244417.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/518aef5e9d8ef63b3eb565403770e3bf.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/589c05446a9ef5c0f3be603528039990.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/5d19d3e8e5b283265d8e86eabe0ca736.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/6556b51919b7c015eeed5decf6e63d27.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/661db048b4d158f993d2e2ec75b25e5a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/6a2c00fb3b1477481d4bcbbace3845ef.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/75ecec0f03ef2a2559567f3f0559dec8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/7cd18f0f734645f36d7ce8a19c07353c.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/7da3e322776b969009f00f256fcdcb44.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/80398f21cd40dfcf9c70fd2a26012bc8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/805b808d3290a2902fc71fe9fa29d66f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/85191616abc5b7b14a5c21934ea7c5a9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/876b3357657b9cb05cfc81e575bb2c6f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/8b342f7de2249328880ef29eb59d7dc9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/8b894b1b2b24dbd13e1eb1ee6e0d5d06.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/8f7ea46ac27249c2db2c19d7c47aaa4b.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/976d2df5f11685ca08e360a83b043ea2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/997d83d70845ed4abb573bd76b7fa065.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/9ee4b5217aaca1723b9a84328199abbd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/9f039692b6e1f5814578a0904ca2a346.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/9f4b7f2ee3480cb339aafab58ebd250a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/a2777fd9ad856a1c168ea51242761755.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/b3706986171c345407304ad504ade58a.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/b4d4cbbce4f3048242fa8a1d36dda2e9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/b4fc27c34651a40366387ca9e71ed739.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/b693c9f399a8148cfda3135c5679c70f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/b6ac809b4595c0e489233e6ff8d30903.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/bacfedb5de1f9eed5b003a205263df61.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/baef3f7a4037319077b55d47da52f00b.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/bcf4e604120b0b5ac4f9d593304b2818.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/c4457ca1a4e44017aba15b245cb72df4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/c9823b0e6ea02e8221699423e4cc9fe3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/cca7d814ece1ce2e21625a145b3fdd16.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/cd5d785c51e6f3a0ff1266d337d864c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/d42b0e2d28ac92ed638a3bf8537eab28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/d62e93c2ed47839f3040fa5806c78329.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/dce29fb3622046029237a25e78ea82b5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/dfa5f402e0cc79f8d354d86322e22b75.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/e1090564d14833d157223226aacfbf62.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/e40b5a21246c1c68ecfd9b28617045c5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/e49771e21405ebb120cdf4b8aa6b53d6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/e59ccd634b35b2778d8e0aafd6f7fe02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/e8a4bdcd6422db2c56cc4d603a1e0e85.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/eda90e059fb91b36962b839ce4e793d5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/f8ff036a744a8ed0e90f76ab4e2278d7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/img/upload/miniature/fb3d37fea172c144bcde04584b768a4f.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/enterprise_localize_db (1).sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot/home-search-enterprise.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot/login.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot/profil.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot/signup-step-final.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshot/singUp-step1.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/AppWeb_Localisation.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Config/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Config/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/submit.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Controller/submit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/traitement.js" beforeDir="false" afterPath="$PROJECT_DIR$/App/Controller/traitement.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/Controller/traitement.php" beforeDir="false" afterPath="$PROJECT_DIR$/App/Controller/traitement.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectId" id="1f1R3nTc3WFkDEbXK4MjFBhh3Sq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/PROJET MOTEUR DE RECHERCHE ENTREPRISE&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="abbb52c1-4634-4676-b06f-10a16f6c1237" name="Default Changelist" comment="" />
+      <created>1595383415466</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595383415466</updated>
+      <workItem from="1595383416746" duration="178000" />
+      <workItem from="1596283550277" duration="517000" />
+      <workItem from="1606027370602" duration="138000" />
+      <workItem from="1607091801665" duration="247000" />
+      <workItem from="1615292747116" duration="27000" />
+      <workItem from="1615297789122" duration="650000" />
+      <workItem from="1620215857556" duration="132000" />
+      <workItem from="1642058606294" duration="1239000" />
+      <workItem from="1642138230286" duration="117000" />
+      <workItem from="1649913173945" duration="2935000" />
+      <workItem from="1674824571149" duration="1793000" />
+      <workItem from="1700287091835" duration="724000" />
+      <workItem from="1700287850935" duration="33000" />
+      <workItem from="1700288098673" duration="75000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
